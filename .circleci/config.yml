@@ -56,13 +56,19 @@ jobs:
           command: ./node_modules/.bin/electron-forge publish
 workflows:
   version: 2
-  check-and-publish:
+  default:
     jobs:
-      - checkout
+      - checkout:
+          filters:
+            tags:
+              only: /^v[0-9]+\.[0-9]+\.[0-9]+.*/
       # - check:
       #     requires:
       #       - checkout
       - lint:
+          filters:
+            tags:
+              only: /^v[0-9]+\.[0-9]+\.[0-9]+.*/
           requires:
             - checkout
       # - test:
@@ -73,7 +79,7 @@ workflows:
             branches:
               ignore: /.*/
             tags:
-              only: /^v[0-9]+\.[0-9]+\.[0-9]+/
+              only: /^v[0-9]+\.[0-9]+\.[0-9]+.*/
           requires:
             # - check
             - lint
