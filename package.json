@@ -79,16 +79,25 @@
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
-      "github_repository": {
-        "owner": "",
-        "name": ""
-      },
       "windowsStoreConfig": {
         "packageName": "",
         "name": "myp"
       },
-      "config": {
-        "a": "foo"
+      "publish_targets": {
+        "win32": [
+          "github"
+        ],
+        "darwin": [
+          "github"
+        ],
+        "linux": [
+          "github"
+        ]
+      },
+      "github_repository": {
+        "owner": "axross",
+        "name": "ankihelper",
+        "draft": true
       }
     }
   }
