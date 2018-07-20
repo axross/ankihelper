@@ -3,7 +3,7 @@
   "name": "ankihelper",
   "productName": "Ankihelper",
   "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
-  "version": "0.0.0-build1",
+  "version": "0.0.0-build1532101317147",
   "main": "./src/index.ts",
   "scripts": {
     "lint": "prettier --list-different ./src/**/*.ts ./src/**/*.tsx",
