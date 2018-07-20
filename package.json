@@ -54,7 +54,7 @@
     "electron-prebuilt-compile": "2.0.4",
     "electron-squirrel-startup": "^1.0.0",
     "prettier": "^1.12.1",
-    "typescript": "^2.9.2"
+    "typescript": "^3.0.0-rc"
   },
   "config": {
     "forge": {
