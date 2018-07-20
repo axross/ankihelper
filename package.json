@@ -2,6 +2,7 @@
   "private": true,
   "name": "ankihelper",
   "productName": "Ankihelper",
+  "description": "A helper tool to add new notes into Anki",
   "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
   "version": "0.0.0-build1532101317147",
   "main": "./src/index.ts",
