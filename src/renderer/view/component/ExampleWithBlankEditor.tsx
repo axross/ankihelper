@@ -1,6 +1,6 @@
 import { InputGroup } from '@blueprintjs/core';
 import * as compromise from 'compromise';
-import { ClassAttributes, createElement } from 'react';
+import { ChangeEvent, ClassAttributes, createElement } from 'react';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
 import Do from './Do';
@@ -29,7 +29,9 @@ const ExampleWithBlankEditor = ({ className }: Props) => {
                   >
                     <InputGroup
                       defaultValue={exampleWithBlank}
-                      onChange={e => cardCreatingState.setExampleWithBlank(e.target.value)}
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        cardCreatingState.setExampleWithBlank(e.currentTarget.value)
+                      }
                       className={className}
                     />
                   </Do>

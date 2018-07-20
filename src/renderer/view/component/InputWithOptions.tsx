@@ -1,10 +1,10 @@
-import { IInputGroupProps, MenuItem, Position } from '@blueprintjs/core';
+import { MenuItem, Position } from '@blueprintjs/core';
 import { ItemPredicate, Suggest as _Suggest } from '@blueprintjs/select';
 import { ChangeEvent, createElement } from 'react';
 import { Value } from 'react-powerplug';
 import styled from '../../core/emotion';
 
-type Props = IInputGroupProps & {
+type Props = {
   items: string[];
   defaultValue?: string;
   itemPredicate?: ItemPredicate<string>;

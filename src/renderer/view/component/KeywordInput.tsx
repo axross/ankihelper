@@ -1,5 +1,5 @@
 import { InputGroup } from '@blueprintjs/core';
-import { ClassAttributes, createElement } from 'react';
+import { ChangeEvent, ClassAttributes, createElement } from 'react';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
 
@@ -15,7 +15,7 @@ const KeywordEditor = ({ className }: Props) => (
         leftIcon="search"
         defaultValue={cardCreatingState.state.keyword}
         placeholder="Search..."
-        onChange={e => cardCreatingState.setKeyword(e.target.value)}
+        onChange={(e: ChangeEvent<HTMLInputElement>) => cardCreatingState.setKeyword(e.currentTarget.value)}
         className={className}
         key={cardCreatingState.state.sessionId}
       />

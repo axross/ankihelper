@@ -1,5 +1,5 @@
 import { InputGroup, Intent, Toaster } from '@blueprintjs/core';
-import { createElement } from 'react';
+import { ChangeEvent, createElement } from 'react';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
 import { Consumer as DependencyConsumer } from '../context/dependency';
@@ -27,7 +27,7 @@ const Ipa = ({ className }: Props) => (
                 {(ipa, isLoading) => (
                   <InputGroup
                     defaultValue={ipa}
-                    onChange={e => cardCreatingState.setIpa(e.target.value)}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => cardCreatingState.setIpa(e.currentTarget.value)}
                     disabled={isLoading}
                     className={className}
                     key={keyword}
