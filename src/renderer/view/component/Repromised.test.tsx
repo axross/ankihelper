@@ -107,4 +107,10 @@ describe('<Repromised>', () => {
       done();
     });
   });
+
+  test('renders null if props.children is void', () => {
+    const { container } = render(
+      <Repromised promise={() => Promise.resolve(Symbol('returnValue'))} initial={Symbol('initial')} />
+    );
+  });
 });
