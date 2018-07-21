@@ -112,5 +112,7 @@ describe('<Repromised>', () => {
     const { container } = render(
       <Repromised promise={() => Promise.resolve(Symbol('returnValue'))} initial={Symbol('initial')} />
     );
+
+    expect(container.firstChild).toBe(null);
   });
 });
