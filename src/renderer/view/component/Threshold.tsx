@@ -1,4 +1,4 @@
-import { Component, ReactNode } from 'react';
+import { Component, createContext, createElement, ReactNode } from 'react';
 
 type Props<Value> = {
   ms: number;
@@ -10,7 +10,17 @@ type State<Value> = {
   value: Value;
 };
 
-class Threshold<Value> extends Component<Props<Value>, State<Value>> {
+const { Provider, Consumer } = createContext(false);
+
+export const NoThreshold = ({ children }: { children: ReactNode }) => <Provider value={true} children={children} />;
+
+function Threshold<Value>(props: Props<Value>) {
+  return (
+    <Consumer>{noThreshold => (noThreshold ? props.children(props.value) : <ThresholdImpl {...props} />)}</Consumer>
+  );
+}
+
+class ThresholdImpl<Value> extends Component<Props<Value>, State<Value>> {
   private timeoutId?: NodeJS.Timer;
 
   public componentDidUpdate(prevProps: Props<Value>) {
