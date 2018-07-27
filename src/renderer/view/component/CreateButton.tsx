@@ -2,15 +2,15 @@ import { Button, Intent, Position, Toaster } from '@blueprintjs/core';
 import { createElement } from 'react';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
-import { Consumer as DependencyConsumer } from '../context/dependency';
+import { Consumer as AnkiServiceConsumer } from '../context/ankiService';
 
 type Props = {
   className?: string;
 };
 
 const CreateButton = ({ className }: Props) => (
-  <DependencyConsumer>
-    {({ ankiService }) => (
+  <AnkiServiceConsumer>
+    {ankiService => (
       <Subscribe to={[CardCreatingState]}>
         {(cardCreatingState: CardCreatingState) => {
           const {
@@ -68,7 +68,7 @@ const CreateButton = ({ className }: Props) => (
         }}
       </Subscribe>
     )}
-  </DependencyConsumer>
+  </AnkiServiceConsumer>
 );
 
 export default CreateButton;

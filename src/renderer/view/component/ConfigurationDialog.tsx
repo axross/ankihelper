@@ -3,9 +3,9 @@ import { ChangeEvent, createElement } from 'react';
 import { Value } from 'react-powerplug';
 import { Subscribe } from 'unstated';
 import Configuration from '../../../common/model/Configuration';
-import styled from '../../core/emotion';
+import styled from '../../core/styled-components';
 import ConfigurationState from '../../state/ConfigurationState';
-import { Consumer as DependencyConsumer } from '../context/dependency';
+import { Consumer as BackendConsumer } from '../context/backend';
 import Repromised from './Repromised';
 import Text from './Text';
 
@@ -32,8 +32,8 @@ const INITIAL_CONFIGURATION: Configuration = {
 };
 
 const ConfigurationDialog = ({ className }: Props) => (
-  <DependencyConsumer>
-    {({ backend }) => (
+  <BackendConsumer>
+    {backend => (
       <Subscribe to={[ConfigurationState]}>
         {(configurationState: ConfigurationState) => (
           <Repromised promise={() => backend.getConfiguration()} initial={INITIAL_CONFIGURATION}>
@@ -213,10 +213,10 @@ const ConfigurationDialog = ({ className }: Props) => (
         )}
       </Subscribe>
     )}
-  </DependencyConsumer>
+  </BackendConsumer>
 );
 
-const Body = styled('div')`
+const Body = styled.div`
   padding: ${({ theme }) => theme.spacing.large}px;
 
   & > *:first-child {
@@ -228,7 +228,7 @@ const Body = styled('div')`
   }
 `;
 
-const Footer = styled('div')`
+const Footer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

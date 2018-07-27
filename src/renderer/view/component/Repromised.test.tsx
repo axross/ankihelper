@@ -1,5 +1,5 @@
 import { createElement } from 'react';
-import { render } from 'react-testing-library';
+import * as TestRenderer from 'react-test-renderer';
 import Repromised from './Repromised';
 
 describe('<Repromised>', () => {
@@ -9,7 +9,7 @@ describe('<Repromised>', () => {
     const children = jest.fn(() => null);
     const promiseFunction = jest.fn(() => Promise.resolve(returnValue));
 
-    render(
+    TestRenderer.create(
       <Repromised promise={promiseFunction} initial={initial}>
         {children}
       </Repromised>
@@ -38,7 +38,7 @@ describe('<Repromised>', () => {
       calledAfter = 'then';
     });
 
-    render(
+    TestRenderer.create(
       <Repromised promise={promiseFunction} initial={Symbol('initial')} then={then}>
         {() => null}
       </Repromised>
@@ -66,7 +66,7 @@ describe('<Repromised>', () => {
       calledAfter = 'catch';
     });
 
-    render(
+    TestRenderer.create(
       <Repromised promise={promiseFunction} initial={Symbol('initial')} catch={catchFunction}>
         {() => null}
       </Repromised>
@@ -93,7 +93,7 @@ describe('<Repromised>', () => {
       calledAfter = 'beforeResolve';
     });
 
-    render(
+    TestRenderer.create(
       <Repromised promise={promiseFunction} initial={Symbol('initial')} beforeResolve={beforeResolve}>
         {() => null}
       </Repromised>
@@ -109,10 +109,10 @@ describe('<Repromised>', () => {
   });
 
   test('renders null if props.children is void', () => {
-    const { container } = render(
+    const testRenderer = TestRenderer.create(
       <Repromised promise={() => Promise.resolve(Symbol('returnValue'))} initial={Symbol('initial')} />
     );
 
-    expect(container.firstChild).toBe(null);
+    expect(testRenderer.root.children).toEqual([]);
   });
 });

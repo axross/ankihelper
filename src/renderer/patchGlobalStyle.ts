@@ -1,4 +1,4 @@
-import { injectGlobal } from 'emotion';
+import { injectGlobal } from 'styled-components';
 import Theme from './core/Theme';
 
 const patchGlobalStyle = (_: Theme) => {

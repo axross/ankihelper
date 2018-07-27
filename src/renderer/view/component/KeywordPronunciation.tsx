@@ -2,7 +2,7 @@ import { Intent, Toaster } from '@blueprintjs/core';
 import { createElement } from 'react';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
-import { Consumer as DependencyConsumer } from '../context/dependency';
+import { Consumer as BackendConsumer } from '../context/backend';
 import AudioButton from './AudioButton';
 import AudioButtonLoading from './AudioButtonLoading';
 import Repromised from './Repromised';
@@ -14,8 +14,8 @@ type Props = {
 
 const KeywordPronunciation = ({ className }: Props) => {
   return (
-    <DependencyConsumer>
-      {({ backend }) => (
+    <BackendConsumer>
+      {backend => (
         <Subscribe to={[CardCreatingState]}>
           {(cardCreatingState: CardCreatingState) => (
             <Threshold ms={600} value={cardCreatingState.state.keyword}>
@@ -42,7 +42,7 @@ const KeywordPronunciation = ({ className }: Props) => {
           )}
         </Subscribe>
       )}
-    </DependencyConsumer>
+    </BackendConsumer>
   );
 };
 

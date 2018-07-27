@@ -1,5 +1,5 @@
 import { ClassAttributes, createElement } from 'react';
-import styled from '../../core/emotion';
+import styled from '../../core/styled-components';
 import ConfigurationDialog from '../component/ConfigurationDialog';
 import DefinitionEditor from '../component/DefinitionEditor';
 import ExampleEditor from '../component/ExampleEditor';
@@ -66,13 +66,13 @@ const Page = ({ className }: Props) => (
   </Root>
 );
 
-const Root = styled('div')`
+const Root = styled.div`
   position: relative;
   min-height: 100vh;
   background-color: #f5f5f4;
 `;
 
-const Inner = styled('div')`
+const Inner = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:

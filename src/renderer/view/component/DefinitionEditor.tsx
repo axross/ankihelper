@@ -2,7 +2,7 @@ import { Intent, Toaster } from '@blueprintjs/core';
 import { ClassAttributes, createElement } from 'react';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
-import { Consumer as DependencyConsumer } from '../context/dependency';
+import { Consumer as BackendConsumer } from '../context/backend';
 import Do from './Do';
 import InputWithOptions from './InputWithOptions';
 import Repromised from './Repromised';
@@ -13,8 +13,8 @@ type Props = ClassAttributes<HTMLElement> & {
 };
 
 const DefinitionEditor = ({ className }: Props) => (
-  <DependencyConsumer>
-    {({ backend }) => (
+  <BackendConsumer>
+    {backend => (
       <Subscribe to={[CardCreatingState]}>
         {(cardCreatingState: CardCreatingState) => (
           <Threshold ms={600} value={cardCreatingState.state.keyword}>
@@ -55,7 +55,7 @@ const DefinitionEditor = ({ className }: Props) => (
         )}
       </Subscribe>
     )}
-  </DependencyConsumer>
+  </BackendConsumer>
 );
 
 export default DefinitionEditor;

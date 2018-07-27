@@ -1,7 +1,7 @@
 import { Intent, Toaster } from '@blueprintjs/core';
 import { ClassAttributes, createElement } from 'react';
 import { Subscribe } from 'unstated';
-import { Consumer as DependencyConsumer } from '../context/dependency';
+import { Consumer as BackendConsumer } from '../context/backend';
 import CardCreatingState from '../../state/CardCreatingState';
 import Do from './Do';
 import InputWithOptions from './InputWithOptions';
@@ -14,8 +14,8 @@ type Props = ClassAttributes<HTMLElement> & {
 
 const PartOfSpeechSelect = ({ className }: Props) => {
   return (
-    <DependencyConsumer>
-      {({ backend }) => (
+    <BackendConsumer>
+      {backend => (
         <Subscribe to={[CardCreatingState]}>
           {(cardCreatingState: CardCreatingState) => (
             <Threshold ms={600} value={cardCreatingState.state.keyword}>
@@ -54,7 +54,7 @@ const PartOfSpeechSelect = ({ className }: Props) => {
           )}
         </Subscribe>
       )}
-    </DependencyConsumer>
+    </BackendConsumer>
   );
 };
 

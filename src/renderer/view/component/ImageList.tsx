@@ -2,9 +2,9 @@ import { Toaster, Intent } from '@blueprintjs/core';
 import { ClassAttributes, createElement, Fragment } from 'react';
 import { Value } from 'react-powerplug';
 import { Subscribe } from 'unstated';
-import styled from '../../core/emotion';
+import styled from '../../core/styled-components';
 import CardCreatingState from '../../state/CardCreatingState';
-import { Consumer as DependencyConsumer } from '../context/dependency';
+import { Consumer as BackendConsumer } from '../context/backend';
 import Repromised from './Repromised';
 import Threshold from './Threshold';
 
@@ -13,8 +13,8 @@ type Props = ClassAttributes<HTMLElement> & {
 };
 
 const PictureList = ({ className }: Props) => (
-  <DependencyConsumer>
-    {({ backend }) => (
+  <BackendConsumer>
+    {backend => (
       <Subscribe to={[CardCreatingState]}>
         {(cardCreatingState: CardCreatingState) => {
           let query = cardCreatingState.state.keyword;
@@ -73,14 +73,14 @@ const PictureList = ({ className }: Props) => (
         }}
       </Subscribe>
     )}
-  </DependencyConsumer>
+  </BackendConsumer>
 );
 
-const Root = styled('div')`
+const Root = styled.div`
   width: 100%;
 `;
 
-const Inner = styled('div')`
+const Inner = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -90,7 +90,7 @@ const Inner = styled('div')`
   margin-bottom: -6px;
 `;
 
-const Item = styled<{ selected: boolean }, 'img'>('img')`
+const Item = styled.img.attrs<{ selected: boolean }>({})`
   flex: auto;
   height: 128px;
   min-width: 96px;

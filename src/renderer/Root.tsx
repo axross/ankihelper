@@ -1,31 +1,36 @@
-import { ThemeProvider } from 'emotion-theming';
 import { ClassAttributes, createElement } from 'react';
+import { ThemeProvider } from 'styled-components';
 import { Provider as StateProvider } from 'unstated';
-import Dependency from './core/Dependency';
 import Theme from './core/Theme';
-import { Provider as DependencyProvider } from './view/context/dependency';
+import AnkiService from './service/AnkiService';
+import Backend from './service/Backend';
 import CardCreatingState from './state/CardCreatingState';
 import ConfigurationState from './state/ConfigurationState';
+import { Provider as AnkiServiceProvider } from './view/context/ankiService';
+import { Provider as BackendProvider } from './view/context/backend';
 import Page from './view/page/Page';
 
 type Props = ClassAttributes<HTMLElement> & {
   cardCreatingState: CardCreatingState;
   configurationState: ConfigurationState;
-  dependency: Dependency;
+  ankiService: AnkiService;
+  backend: Backend;
   theme: Theme;
   className?: string;
 };
 
-const Root = ({ cardCreatingState, configurationState, dependency, theme, className }: Props) => (
-  <DependencyProvider value={dependency}>
-    <ThemeProvider theme={theme}>
-      <StateProvider inject={[configurationState]}>
-        <StateProvider inject={[cardCreatingState]}>
-          <Page className={className} />
+const Root = ({ cardCreatingState, configurationState, ankiService, backend, theme, className }: Props) => (
+  <AnkiServiceProvider value={ankiService}>
+    <BackendProvider value={backend}>
+      <ThemeProvider theme={theme}>
+        <StateProvider inject={[configurationState]}>
+          <StateProvider inject={[cardCreatingState]}>
+            <Page className={className} />
+          </StateProvider>
         </StateProvider>
-      </StateProvider>
-    </ThemeProvider>
-  </DependencyProvider>
+      </ThemeProvider>
+    </BackendProvider>
+  </AnkiServiceProvider>
 );
 
 export default Root;

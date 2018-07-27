@@ -127,12 +127,12 @@ class CardCreatingState extends Container<State> {
     return true;
   }
 
-  public constructor(keyword: string) {
+  public constructor() {
     super();
 
     this.defaultState = {
       sessionId: 1,
-      keyword,
+      keyword: '',
       keywordPronunciation: null,
       keywordPronunciationLoading: 0,
       ipa: '',

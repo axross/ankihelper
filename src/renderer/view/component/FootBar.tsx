@@ -1,5 +1,5 @@
 import { createElement, ClassAttributes } from 'react';
-import styled from '../../core/emotion';
+import styled from '../../core/styled-components';
 import ClearButton from './ClearButton';
 import ConfigurationButton from './ConfigurationButton';
 import CreateButton from './CreateButton';
@@ -18,7 +18,7 @@ const FootBar = ({ className }: Props) => (
   </Root>
 );
 
-const Root = styled('div')`
+const Root = styled.div`
   display: grid;
   padding: ${({ theme }) => theme.spacing.small}px ${({ theme }) => theme.spacing.regular}px;
   grid-template-columns: auto 1fr auto auto;

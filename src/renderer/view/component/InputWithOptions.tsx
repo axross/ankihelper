@@ -2,7 +2,7 @@ import { MenuItem, Position } from '@blueprintjs/core';
 import { ItemPredicate, Suggest as _Suggest } from '@blueprintjs/select';
 import { ChangeEvent, createElement } from 'react';
 import { Value } from 'react-powerplug';
-import styled from '../../core/emotion';
+import styled from '../../core/styled-components';
 
 type Props = {
   items: string[];

@@ -12,12 +12,10 @@ import theme from './theme';
 import patchGlobalStyle from './patchGlobalStyle';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const dependency = {
-    ankiService: new AnkiService(),
-    backend: new Backend(ipcRenderer),
-  };
+  const ankiService = new AnkiService();
+  const backend = new Backend(ipcRenderer);
 
-  const cardCreatingState = new CardCreatingState('');
+  const cardCreatingState = new CardCreatingState();
   const configurationState = new ConfigurationState();
 
   cardCreatingState.subscribe(() => console.info(cardCreatingState.state));
@@ -31,7 +29,7 @@ window.addEventListener('DOMContentLoaded', () => {
       createElement(
         AppContainer,
         {},
-        createElement(Root, { cardCreatingState, configurationState, dependency, theme })
+        createElement(Root, { cardCreatingState, configurationState, ankiService, backend, theme })
       ),
       document.getElementById('app')
     );

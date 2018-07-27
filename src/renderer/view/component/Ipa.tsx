@@ -2,7 +2,7 @@ import { InputGroup, Intent, Toaster } from '@blueprintjs/core';
 import { ChangeEvent, createElement } from 'react';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
-import { Consumer as DependencyConsumer } from '../context/dependency';
+import { Consumer as BackendConsumer } from '../context/backend';
 import Repromised from './Repromised';
 import Threshold from './Threshold';
 
@@ -11,8 +11,8 @@ type Props = {
 };
 
 const Ipa = ({ className }: Props) => (
-  <DependencyConsumer>
-    {({ backend }) => (
+  <BackendConsumer>
+    {backend => (
       <Subscribe to={[CardCreatingState]}>
         {(cardCreatingState: CardCreatingState) => (
           <Threshold ms={600} value={cardCreatingState.state.keyword}>
@@ -39,7 +39,7 @@ const Ipa = ({ className }: Props) => (
         )}
       </Subscribe>
     )}
-  </DependencyConsumer>
+  </BackendConsumer>
 );
 
 export default Ipa;

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ClearButton> matches with the last snapshot 1`] = `
+<button
+  className="bp3-button"
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  onKeyUp={[Function]}
+  type="button"
+>
+  <span
+    className="bp3-button-text"
+  >
+    Clear
+  </span>
+</button>
+`;

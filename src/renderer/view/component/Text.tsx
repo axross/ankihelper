@@ -1,5 +1,5 @@
 import { ClassAttributes, createElement } from 'react';
-import styled from '../../core/emotion';
+import styled from '../../core/styled-components';
 import Theme from '../../core/Theme';
 
 type Props = ClassAttributes<HTMLElement> & {
@@ -14,7 +14,7 @@ const Text = ({ variant = 'default', className, children }: Props) => (
   </Root>
 );
 
-const Root = styled<{ variant: keyof Theme['text'] }, 'span'>('span')`
+const Root = styled.span.attrs<{ variant: keyof Theme['text'] }>({})`
   display: block;
   font-family: ${({ variant, theme }) => theme.text[variant].family};
   font-size: ${({ variant, theme }) => theme.text[variant].size}px;
