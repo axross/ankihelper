@@ -64,15 +64,8 @@
   "config": {
     "forge": {
       "make_targets": {
-        "win32": [
-          "squirrel"
-        ],
         "darwin": [
           "zip"
-        ],
-        "linux": [
-          "deb",
-          "rpm"
         ]
       },
       "electronPackagerConfig": {
@@ -85,20 +78,12 @@
       "electronWinstallerConfig": {
         "name": "myp"
       },
-      "electronInstallerDebian": {},
-      "electronInstallerRedhat": {},
       "windowsStoreConfig": {
         "packageName": "",
         "name": "myp"
       },
       "publish_targets": {
-        "win32": [
-          "github"
-        ],
         "darwin": [
-          "github"
-        ],
-        "linux": [
           "github"
         ]
       },
