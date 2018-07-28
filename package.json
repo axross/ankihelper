@@ -4,7 +4,7 @@
   "productName": "Ankihelper",
   "description": "A helper tool to add new notes into Anki",
   "author": "Kohei Asai <me@axross.io> (https://github.com/axross)",
-  "version": "0.0.1",
+  "version": "0.0.2-alpha",
   "main": "./src/index.ts",
   "scripts": {
     "lint": "prettier --list-different ./src/**/*.ts ./src/**/*.tsx",
