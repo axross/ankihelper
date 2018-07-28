@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Ipa> calls cardCreatingState.getIpa() and backend.setIpa() when it is mounted 1`] = `
+<div
+  className="bp3-input-group"
+>
+  <input
+    className="bp3-input"
+    defaultValue=""
+    disabled={false}
+    onChange={[Function]}
+    style={
+      Object {
+        "paddingRight": 10,
+      }
+    }
+    type="text"
+  />
+</div>
+`;
+
+exports[`<Ipa> calls cardCreatingState.getIpa() and backend.setIpa() whenever cardCreatingState.state.keyword is changed 1`] = `
+<div
+  className="bp3-input-group"
+>
+  <input
+    className="bp3-input"
+    defaultValue="next keyword"
+    disabled={false}
+    onChange={[Function]}
+    style={
+      Object {
+        "paddingRight": 10,
+      }
+    }
+    type="text"
+  />
+</div>
+`;
+
+exports[`<Ipa> calls cardCreatingState.getIpa() and backend.setIpa() whenever cardCreatingState.state.keyword is changed 2`] = `
+<div
+  className="bp3-input-group"
+>
+  <input
+    className="bp3-input"
+    defaultValue="third something"
+    disabled={false}
+    onChange={[Function]}
+    style={
+      Object {
+        "paddingRight": 10,
+      }
+    }
+    type="text"
+  />
+</div>
+`;
