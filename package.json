@@ -64,9 +64,11 @@
   "config": {
     "forge": {
       "make_targets": {
+        "win32": [],
         "darwin": [
           "zip"
-        ]
+        ],
+        "linux": []
       },
       "electronPackagerConfig": {
         "packageManager": "npm",
