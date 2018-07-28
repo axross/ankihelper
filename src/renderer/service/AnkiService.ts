@@ -1,7 +1,7 @@
 import * as compromise from 'compromise';
 import { extension } from 'mime-types';
 import fetch from 'node-fetch';
-import * as v4 from 'uuid/v4';
+import * as v5 from 'uuid/v5';
 import File from '../../common/model/File';
 
 class AnkiService {
@@ -38,11 +38,9 @@ class AnkiService {
       picture,
     });
 
-    const examplePronunciationFileName = `${v4()}.${extension(examplePronunciation.mimeType)}`;
-    const keywordPronunciationFileName = `${v4()}.${extension(keywordPronunciation.mimeType)}`;
-    const pictureFileName = `${compromise(example)
-      .hyphenate()
-      .out()}.${extension(picture.mimeType)}`;
+    const examplePronunciationFileName = `${v5(example, v5.URL)}.${extension(examplePronunciation.mimeType)}`;
+    const keywordPronunciationFileName = `${v5(keyword, v5.URL)}.${extension(keywordPronunciation.mimeType)}`;
+    const pictureFileName = `${v5(example, v5.URL)}.${extension(picture.mimeType)}`;
 
     const response = await fetch(`http://localhost:8765`, {
       method: 'POST',
@@ -81,7 +79,7 @@ class AnkiService {
                   fields: {
                     'ID*': `${compromise(keyword)
                       .hyphenate()
-                      .out()}-${v4()}`,
+                      .out()}-${v5(example, v5.URL)}`,
                     'Spelling*': keyword,
                     'IPA*': ipa,
                     'Pronunciation*': `[sound:${examplePronunciationFileName}]`,
