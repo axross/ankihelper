@@ -14,6 +14,7 @@ export type State = {
   examplePronunciation: File | null;
   examplePronunciationLoading: number;
   exampleWithBlank: string;
+  imageSearchQuery: string;
   picture: File | null;
   pictureLoading: number;
   keepExample: boolean;
@@ -68,6 +69,10 @@ class CardCreatingState extends Container<State> {
     this.setState({ exampleWithBlank });
   }
 
+  public setImageSearchQuery(imageSearchQuery: string) {
+    this.setState({ imageSearchQuery });
+  }
+
   public beginLoadingPicture() {
     this.setState(({ pictureLoading }) => ({ pictureLoading: pictureLoading + 1 }));
   }
@@ -105,6 +110,7 @@ class CardCreatingState extends Container<State> {
             example: this.state.example,
             examplePronunciation: this.state.examplePronunciation,
             exampleWithBlank: this.state.exampleWithBlank,
+            imageSearchQuery: this.state.imageSearchQuery,
             picture: this.state.picture,
           }
         : {}),
@@ -143,6 +149,7 @@ class CardCreatingState extends Container<State> {
       examplePronunciation: null,
       examplePronunciationLoading: 0,
       exampleWithBlank: '',
+      imageSearchQuery: '',
       picture: null,
       pictureLoading: 0,
       keepExample: false,

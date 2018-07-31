@@ -19,8 +19,8 @@ const PictureList = ({ className }: Props) => (
         {(cardCreatingState: CardCreatingState) => {
           let query = cardCreatingState.state.keyword;
 
-          if (cardCreatingState.state.example !== '') {
-            query = cardCreatingState.state.example;
+          if (cardCreatingState.state.imageSearchQuery !== '') {
+            query = cardCreatingState.state.imageSearchQuery;
           }
 
           return (

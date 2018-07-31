@@ -7,6 +7,7 @@ import _ExamplePronunciation from '../component/ExamplePronunciation';
 import ExampleWithBlankEditor from '../component/ExampleWithBlankEditor';
 import _FootBar from '../component/FootBar';
 import ImageList from '../component/ImageList';
+import ImageSearchQuerySelector from '../component/ImageSearchQuerySelector';
 import _Ipa from '../component/Ipa';
 import _KeepExample from '../component/KeepExample';
 import KeywordInput from '../component/KeywordInput';
@@ -57,6 +58,8 @@ const Page = ({ className }: Props) => (
 
       <ImagesHeadline variant="headline">Images</ImagesHeadline>
 
+      <ImagesSearchQuery />
+
       <Images />
     </Inner>
 
@@ -87,6 +90,7 @@ const Inner = styled.div`
     'exampleWithBlankHeadline exampleWithBlankHeadline exampleWithBlankHeadline'
     'exampleWithBlank exampleWithBlank exampleWithBlank'
     'imagesHeadline imagesHeadline imagesHeadline'
+    'imagesSearchQuery imagesSearchQuery imagesSearchQuery'
     'images images images';
   justify-items: stretch;
   padding: ${({ theme }) => `${theme.spacing.large}px ${theme.spacing.large}px 65px`};
@@ -185,6 +189,11 @@ const ExampleWithBlank = styled(ExampleWithBlankEditor)`
 const ImagesHeadline = styled(Text)`
   grid-area: imagesHeadline;
   margin-bottom: ${({ theme }) => theme.spacing.small}px;
+`;
+
+const ImagesSearchQuery = styled(ImageSearchQuerySelector)`
+  grid-area: imagesSearchQuery;
+  marginbottom: ${({ theme }) => theme.spacing.small}px;
 `;
 
 const Images = styled(ImageList)`
