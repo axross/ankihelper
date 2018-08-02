@@ -87,6 +87,7 @@ class AnkiService {
                     'Definition*': definition,
                     'Example Sentence*': example,
                     'Example Sentence (with Blank)': exampleWithBlank,
+                    'Example Sentence Pronunciation*': `[sound:${examplePronunciationFileName}]`,
                     'Picture*': `<img src="${pictureFileName}">`,
                   },
                   tags: ['ankihelper'],
