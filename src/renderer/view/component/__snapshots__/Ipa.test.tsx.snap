@@ -25,7 +25,7 @@ exports[`<Ipa> calls cardCreatingState.getIpa() and backend.setIpa() whenever ca
 >
   <input
     className="bp3-input"
-    defaultValue="next keyword"
+    defaultValue="ipa of next keyword"
     disabled={false}
     onChange={[Function]}
     style={
@@ -44,7 +44,7 @@ exports[`<Ipa> calls cardCreatingState.getIpa() and backend.setIpa() whenever ca
 >
   <input
     className="bp3-input"
-    defaultValue="third something"
+    defaultValue="ipa of third something"
     disabled={false}
     onChange={[Function]}
     style={

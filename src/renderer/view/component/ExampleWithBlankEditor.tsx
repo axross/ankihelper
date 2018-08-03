@@ -1,10 +1,10 @@
 import { InputGroup } from '@blueprintjs/core';
 import * as compromise from 'compromise';
 import { ChangeEvent, ClassAttributes, createElement } from 'react';
+import Redebounce from 'redebounce';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
 import Do from './Do';
-import Threshold from './Threshold';
 
 type Props = ClassAttributes<HTMLElement> & {
   className?: string;
@@ -14,9 +14,9 @@ const ExampleWithBlankEditor = ({ className }: Props) => {
   return (
     <Subscribe to={[CardCreatingState]}>
       {(cardCreatingState: CardCreatingState) => (
-        <Threshold ms={600} value={cardCreatingState.state.keyword}>
+        <Redebounce dueTime={600} value={cardCreatingState.state.keyword}>
           {keyword => (
-            <Threshold ms={600} value={cardCreatingState.state.example}>
+            <Redebounce dueTime={600} value={cardCreatingState.state.example}>
               {example => {
                 const exampleWithBlank = compromise(example)
                   .replace(keyword, '______')
@@ -37,9 +37,9 @@ const ExampleWithBlankEditor = ({ className }: Props) => {
                   </Do>
                 );
               }}
-            </Threshold>
+            </Redebounce>
           )}
-        </Threshold>
+        </Redebounce>
       )}
     </Subscribe>
   );

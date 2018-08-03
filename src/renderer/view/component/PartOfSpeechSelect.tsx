@@ -1,12 +1,12 @@
 import { Intent, Toaster } from '@blueprintjs/core';
 import { ClassAttributes, createElement } from 'react';
+import Redebounce from 'redebounce';
 import { Subscribe } from 'unstated';
 import { Consumer as BackendConsumer } from '../context/backend';
 import CardCreatingState from '../../state/CardCreatingState';
 import Do from './Do';
 import InputWithOptions from './InputWithOptions';
 import Repromised from './Repromised';
-import Threshold from './Threshold';
 
 type Props = ClassAttributes<HTMLElement> & {
   className?: string;
@@ -18,7 +18,7 @@ const PartOfSpeechSelect = ({ className }: Props) => {
       {backend => (
         <Subscribe to={[CardCreatingState]}>
           {(cardCreatingState: CardCreatingState) => (
-            <Threshold ms={600} value={cardCreatingState.state.keyword}>
+            <Redebounce dueTime={600} value={cardCreatingState.state.keyword}>
               {keyword => (
                 <Repromised
                   promise={() => backend.getEntries(keyword)}
@@ -50,7 +50,7 @@ const PartOfSpeechSelect = ({ className }: Props) => {
                   }}
                 </Repromised>
               )}
-            </Threshold>
+            </Redebounce>
           )}
         </Subscribe>
       )}

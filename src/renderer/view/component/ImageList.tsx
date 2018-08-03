@@ -1,12 +1,12 @@
 import { Toaster, Intent } from '@blueprintjs/core';
 import { ClassAttributes, createElement, Fragment } from 'react';
+import Redebounce from 'redebounce';
 import { Value } from 'react-powerplug';
 import { Subscribe } from 'unstated';
 import styled from '../../core/styled-components';
 import CardCreatingState from '../../state/CardCreatingState';
 import { Consumer as BackendConsumer } from '../context/backend';
 import Repromised from './Repromised';
-import Threshold from './Threshold';
 
 type Props = ClassAttributes<HTMLElement> & {
   className?: string;
@@ -24,7 +24,7 @@ const PictureList = ({ className }: Props) => (
           }
 
           return (
-            <Threshold ms={600} value={query}>
+            <Redebounce dueTime={600} value={query}>
               {query => (
                 <Value initial={null as string | null} key={query}>
                   {({ value: selectedPictureUrl, set }) => (
@@ -68,7 +68,7 @@ const PictureList = ({ className }: Props) => (
                   )}
                 </Value>
               )}
-            </Threshold>
+            </Redebounce>
           );
         }}
       </Subscribe>

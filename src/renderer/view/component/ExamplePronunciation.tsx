@@ -1,12 +1,12 @@
 import { Intent, Toaster } from '@blueprintjs/core';
 import { createElement } from 'react';
+import Redebounce from 'redebounce';
 import { Subscribe } from 'unstated';
 import CardCreatingState from '../../state/CardCreatingState';
 import { Consumer as BackendConsumer } from '../context/backend';
 import AudioButton from './AudioButton';
 import AudioButtonLoading from './AudioButtonLoading';
 import Repromised from './Repromised';
-import Threshold from './Threshold';
 
 type Props = {
   className?: string;
@@ -18,7 +18,7 @@ const ExamplePronunciation = ({ className }: Props) => {
       {backend => (
         <Subscribe to={[CardCreatingState]}>
           {(cardCreatingState: CardCreatingState) => (
-            <Threshold ms={600} value={cardCreatingState.state.example}>
+            <Redebounce dueTime={600} value={cardCreatingState.state.example}>
               {example => (
                 <Repromised
                   initial={null}
@@ -38,7 +38,7 @@ const ExamplePronunciation = ({ className }: Props) => {
                   }
                 </Repromised>
               )}
-            </Threshold>
+            </Redebounce>
           )}
         </Subscribe>
       )}
