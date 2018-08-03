@@ -75,14 +75,14 @@ class AnkiService {
               params: {
                 note: {
                   deckName: 'Default',
-                  modelName: 'New English Word',
+                  modelName: 'Ankihelper',
                   fields: {
                     'ID*': `${compromise(keyword)
                       .hyphenate()
                       .out()}-${v5(example, v5.URL)}`,
                     'Spelling*': keyword,
                     'IPA*': ipa,
-                    'Pronunciation*': `[sound:${examplePronunciationFileName}]`,
+                    'Pronunciation*': `[sound:${keywordPronunciationFileName}]`,
                     'Lexical Category*': partOfSpeech,
                     'Definition*': definition,
                     'Example Sentence*': example,
